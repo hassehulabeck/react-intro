@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Productlist from "./productlist";
+import Dicebox from "./dicebox";
 
-ReactDOM.render(<Productlist />, document.getElementById("root"));
+ReactDOM.render(<Dicebox />, document.getElementById("root"));
