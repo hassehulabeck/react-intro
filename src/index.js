@@ -42,7 +42,11 @@ class Productlist extends React.Component {
             <div>
                 <ul>
                     {this.state.products.map((product) => (
-                        <Productinfo key={product.id} product={product} />
+                        <Productinfo
+                            key={product.id}
+                            product={product}
+                            //klick={() => this.deleteProduct(product.id)}
+                        />
                     ))}
                 </ul>
                 <button onClick={() => this.sortProducts()}>
