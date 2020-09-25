@@ -37,15 +37,32 @@ class Productlist extends React.Component {
         });
     }
 
+    deleteProduct(index) {
+        let tempProducts = this.state.products;
+        tempProducts.splice(index, 1);
+        this.setState({
+            products: tempProducts,
+        });
+    }
+
     render() {
         return (
             <div>
+                <h2>Fredag 25 september</h2>
+                <ol>
+                    <li>Code splitting</li>
+                    <li>Fetch, ajax & API</li>
+                    <li>
+                        "Yatzy" - 5 tärningar. Plus utvecklingar (totalsumma,
+                        slå om, två spelare)
+                    </li>
+                </ol>
                 <ul>
-                    {this.state.products.map((product) => (
+                    {this.state.products.map((product, index) => (
                         <Productinfo
                             key={product.id}
                             product={product}
-                            //klick={() => this.deleteProduct(product.id)}
+                            klick={() => this.deleteProduct(index)}
                         />
                     ))}
                 </ul>
@@ -62,6 +79,7 @@ function Productinfo(props) {
         <article className="produkt">
             <h3>{props.product.name}</h3>
             <p>{props.product.price} inkl moms</p>
+            <button onClick={() => props.klick()}>Ta bort</button>
         </article>
     );
 }
