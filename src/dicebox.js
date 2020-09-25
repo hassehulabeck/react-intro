@@ -30,6 +30,21 @@ export default class Dicebox extends React.Component {
             ],
         };
     }
+
+    roll() {
+        // Trestegsmetod för att ändra i en array i state.
+        // 1. Kopiera. 2.Ändra. 3. Lägg tillbaka.
+        let tempDice = this.state.die;
+        tempDice.forEach((dice) => {
+            if (!dice.locked) {
+                dice.value = Math.ceil(Math.random() * 6);
+            }
+        });
+        this.setState({
+            die: tempDice,
+        });
+    }
+
     render() {
         return (
             <div>
@@ -39,6 +54,7 @@ export default class Dicebox extends React.Component {
                         <Dice value={dice.value} />
                     ))}
                 </section>
+                <button onClick={() => this.roll()}>Rulla</button>
             </div>
         );
     }
