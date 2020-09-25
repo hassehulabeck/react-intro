@@ -1,5 +1,8 @@
 .dice {
+    flex: 0 1 auto;
     height: 1em;
     width: 1em;
     background-color: aqua;
+    padding: 4px;
+    margin: 0.5em;
 }

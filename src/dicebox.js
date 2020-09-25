@@ -1,5 +1,6 @@
 import React from "react";
 import Dice from "./dice";
+import "./dicebox.css";
 
 export default class Dicebox extends React.Component {
     constructor() {
@@ -33,9 +34,11 @@ export default class Dicebox extends React.Component {
         return (
             <div>
                 <h1>Dicebox</h1>
-                {this.state.die.map((dice) => {
-                    <Dice value={dice.value} />;
-                })}
+                <section className="dicebox">
+                    {this.state.die.map((dice) => (
+                        <Dice value={dice.value} />
+                    ))}
+                </section>
             </div>
         );
     }
