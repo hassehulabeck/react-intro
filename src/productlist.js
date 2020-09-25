@@ -6,31 +6,29 @@ export default class Productlist extends React.Component {
     constructor() {
         super();
         this.state = {
-            products: [
-                {
-                    id: 2,
-                    name: "Hammare B14",
-                    price: 129,
-                },
-                {
-                    id: 4,
-                    name: "Fiskespö Celeste",
-                    price: 799,
-                    weight: 230,
-                },
-                {
-                    id: 3,
-                    name: "Frontlastare Volvo B16",
-                    price: 35000,
-                },
-            ],
+            products: [],
         };
+    }
+
+    componentDidMount() {
+        fetch("https://www.hulabeck.se/html/temp/products.json")
+            .then((res) => res.json())
+            .then(
+                (res) => {
+                    this.setState({
+                        products: res.products,
+                    });
+                },
+                (error) => {
+                    console.error(error);
+                }
+            );
     }
 
     sortProducts() {
         let tempProducts = this.state.products;
         tempProducts.sort((a, b) => {
-            return b.price - a.price;
+            return b.consumerPrice - a.consumerPrice;
         });
         this.setState({
             products: tempProducts,
